@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useInfiniteQuery } from "react-query";
-import SideBar from "../sidebar/sidebar";
-import Video from "../video/video";
+import { Link } from "react-router-dom";
 
+import Video from "../video/video";
 import { VIDEOS_API } from "../../constants/apiUrl";
 
 const fetchVideos = async ({ pageParam = "" }) => {
@@ -39,33 +39,38 @@ function VideoList() {
   if (isLoading) return <h1>Loading....</h1>;
 
   return (
-    <div className="bg-black bg-opacity-90 fixed top-14 flex justify-around gap-10">
-      <SideBar />
-      {/* <InfiniteScroll
-        dataLength={data.pages[0].pageInfo.resultsPerPage}
-        hasMore={isFetchingNextPage}
-        next={fetchNextPage}
-        loader={<div>Loading....</div>}> */}
-      <div
-        onScroll={handleScroll}
-        className="mt-5 h-screen flex justify-start gap-4 flex-wrap overflow-auto">
-        {data?.pages.map(page => (
-          <React.Fragment key={page.nextPageToken}>
-            {page.items.map(item => (
+    // <div className="bg-black bg-opacity-90 fixed top-14 flex justify-around gap-10">
+    // <div className="pt-8 pb-16 bg-black bg-opacity-80 fixed top-14 flex-wrap overflow-auto h-full left-16 px-12 flex justify-start gap-4">
+    <div
+      onScroll={handleScroll}
+      className='p-8 pb-14 w-screen h-full overflow-auto bg-pdark 
+    fixed top-14 left-18 grid lg:grid-cols-4 md:grid-cols-2 gap-y-4'>
+      {data?.pages.map(page => (
+        <React.Fragment key={page.nextPageToken}>
+          {page.items.map(item => (
+            <Link
+              to={item.id}
+              state={{
+                title: item.snippet.title,
+                videoId: item.id,
+                channelId: item.snippet.channelId,
+                channelTitle: item.snippet.channelTitle,
+                publishedDate: item.snippet.publishedAt,
+                description: item.snippet.description,
+              }}
+              key={item.id}>
               <Video
-                key={item.id}
                 title={item.snippet.title}
                 videoId={item.id}
                 channelId={item.snippet.channelId}
+                publishedDate={item.snippet.publishedAt}
                 channelTitle={item.snippet.channelTitle}
                 imageUrl={item.snippet.thumbnails.medium.url}
-                duration={item.contentDetails.duration}
-                viewCount={item.statistics.viewCount}
               />
-            ))}
-          </React.Fragment>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </React.Fragment>
+      ))}
     </div>
   );
 }
