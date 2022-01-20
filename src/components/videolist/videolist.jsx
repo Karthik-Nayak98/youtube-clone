@@ -1,52 +1,30 @@
 import React from "react";
-import { useInfiniteQuery } from "react-query";
 import { Link } from "react-router-dom";
 
 import Video from "../video/video";
 import { VIDEOS_API } from "../../constants/apiUrl";
+import { useInfiniteYouTubeQuery } from "../../hooks/useInfiniteYouTubeQuery";
+import { useScroll } from "../../hooks/useScroll";
 
-const fetchVideos = async ({ pageParam = "" }) => {
-  const params = new URLSearchParams({
+function VideoList() {
+  const videoList = useInfiniteYouTubeQuery("videoList", VIDEOS_API, {
     part: "snippet,contentDetails,statistics",
     maxResults: 20,
     chart: "mostPopular",
-    pageToken: pageParam,
-    key: process.env.REACT_APP_YOUTUBE_API,
+    regionCode: "IN",
   });
 
-  const url = `${VIDEOS_API}?${params.toString()}`;
-  const res = await fetch(url);
-  return res.json();
-};
+  const scroll = useScroll(videoList);
 
-function VideoList() {
-  const { isFetchingNextPage, fetchNextPage, hasNextPage, isLoading, data } =
-    useInfiniteQuery("videoList", fetchVideos, {
-      getNextPageParam: lastPage => {
-        if ("nextPageToken" in lastPage) return lastPage.nextPageToken;
-        return undefined;
-      },
-    });
-
-  const handleScroll = event => {
-    const { scrollHeight, scrollTop, clientHeight } = event.target;
-    if (scrollHeight - scrollTop <= clientHeight * 2 && !isFetchingNextPage) {
-      console.log("fetching next page...");
-      if (hasNextPage) fetchNextPage();
-    }
-  };
-
-  if (isLoading) return <h1>Loading....</h1>;
+  if (videoList.isLoading) return <h1>Loading....</h1>;
 
   return (
-    // <div className="bg-black bg-opacity-90 fixed top-14 flex justify-around gap-10">
-    // <div className="pt-8 pb-16 bg-black bg-opacity-80 fixed top-14 flex-wrap overflow-auto h-full left-16 px-12 flex justify-start gap-4">
     <div
-      onScroll={handleScroll}
+      onScroll={scroll}
       className='p-8 pb-14 w-screen h-full overflow-auto bg-pdark 
-    fixed top-14 left-18 grid lg:grid-cols-4 md:grid-cols-2 gap-y-4'>
-      {data?.pages.map(page => (
-        <React.Fragment key={page.nextPageToken}>
+    fixed top-14 flex flex-wrap items-center justify-center gap-4 md:justify-around'>
+      {videoList?.data?.pages.map((page, index) => (
+        <React.Fragment key={index}>
           {page.items.map(item => (
             <Link
               to={item.id}
