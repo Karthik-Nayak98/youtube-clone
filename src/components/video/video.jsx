@@ -1,23 +1,10 @@
 import React from "react";
-import { useQuery } from "react-query";
 import formatDistance from "date-fns/formatDistance";
 import PropTypes from "prop-types";
 
 import { CHANNEL_API, VIDEOS_API } from "../../constants/apiUrl";
 import { durationFormatter, likesFormatter } from "../../utils/utility";
-
-const fetcher = async (API, id) => {
-  const params = new URLSearchParams({
-    part: "snippet,contentDetails,statistics",
-    id: id,
-    key: process.env.REACT_APP_YOUTUBE_API,
-  });
-
-  const url = `${API}?${params.toString()}`;
-  const res = await fetch(url);
-  return res.json();
-};
-
+import { useYouTubeQuery } from "../../hooks/useYouTubeQuery";
 function Video({
   title,
   videoId = false,
@@ -26,21 +13,12 @@ function Video({
   channelId = false,
   publishedDate,
 }) {
-  const channelDetail = useQuery(
-    ["channelDetails", CHANNEL_API, channelId],
-    () => fetcher(CHANNEL_API, channelId),
-    {
-      enabled: channelId !== undefined,
-    }
+  const channelDetail = useYouTubeQuery(
+    "channelDetails",
+    CHANNEL_API,
+    channelId
   );
-
-  const videoDetails = useQuery(
-    ["videoDetails", VIDEOS_API, videoId],
-    () => fetcher(VIDEOS_API, videoId),
-    {
-      enabled: videoId !== undefined,
-    }
-  );
+  const videoDetails = useYouTubeQuery("videoDetails", VIDEOS_API, videoId);
 
   return (
     <div key={videoId} className='w-64 h-56 mb-2'>
