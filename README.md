@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# YouTube Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align='center'><img width="475" alt="image" src="https://user-images.githubusercontent.com/39642646/150481047-c62c1aa2-fd4b-4887-a4da-715c59bb82c8.png"></p>
 
-## Available Scripts
+<p align='center'>
+  <img alt="licence" src="https://img.shields.io/github/license/Karthik-Nayak98/youtube-clone?color=blue">
+  <img alt='react' src='https://img.shields.io/badge/React-17.0.2+-61DBFB?&logo=react&alt=%22react%16version%22'/>
+  <img alt='tailwind' src='https://img.shields.io/badge/Tailwind-3.0.12-38BDF8?&logo=tailwindcss&alt=%22react%16version%22'/>
+  <img alt='last-commit' src='https://img.shields.io/github/last-commit/karthik-nayak98/youtube-clone'/>
+</p>
 
-In the project directory, you can run:
+## 📋 Description
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A clone of YouTube webapp which has different features such as:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- List popular videos in India.
+- Search videos on particular keyword.
+- Play a video.
+- Comment thread and related video of currently playing video.
+- Comment on a video for logged user.
+- SignIn and SignOut.
 
-### `npm test`
+## 🚀 Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+1. Install [nodejs](https://nodejs.org/en/)
+1. Clone project using the command `git clone <repo-url>`
+1. Install all the dependencies using `npm install`
+1. Run the project using `npm start`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> **Note:** _Create a .env file in the root directory & store Client-Id and API key from Google API._
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🖥️ Technologies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+- [ReactJS](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com)
+- [React Router v6](https://reactrouter.com/)
+- [React Query](https://react-query.tanstack.com/overview)
+- [YouTube API](https://developers.google.com/youtube/v3/docs/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📸 Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Home](https://user-images.githubusercontent.com/39642646/150553097-6a72de91-8223-46c0-90e1-4066b981f5eb.jpg)
+![search](https://user-images.githubusercontent.com/39642646/150553155-aeb5e9e4-01f8-420e-8efd-9d575c47e6d1.jpg)
+![videoplay](https://user-images.githubusercontent.com/39642646/150553189-aac27643-c427-4a22-89a4-7f5be7e249f0.jpg)
+![related-video](https://user-images.githubusercontent.com/39642646/150553169-5159c250-21df-48b0-a799-1b3cce3d46ef.jpg)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 👨 Author Info
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Karthik Nayak**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Twitter - [@KarthikNayak98](https://twitter.com/KarthikNayak98)
+- LinkedIn - [Karthik Nayak](https://www.linkedin.com/in/karthiknayak98)
 
-### Code Splitting
+## 📝 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Copyright © 2022 [Karthik Nayak](https://github.com/karthik-nayak98).<br />
+This project is [MIT](https://github.com/Karthik-Nayak98/youtube-clone/blob/main/LICENSE) licensed.
