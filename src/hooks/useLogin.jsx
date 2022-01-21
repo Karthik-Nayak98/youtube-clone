@@ -15,8 +15,8 @@ const handleLogin = (setUser, response) => {
   setUser(userObj);
 };
 
-const handleFailure = () => {
-  console.log("failed to login");
+const handleFailure = err => {
+  console.log("failed to login", err);
 };
 
 export const useLogin = () => {
@@ -28,5 +28,6 @@ export const useLogin = () => {
     },
     onFailure: handleFailure,
     cookiePolicy: "single_host_origin",
+    scope: "https://www.googleapis.com/auth/youtube.force-ssl",
   });
 };

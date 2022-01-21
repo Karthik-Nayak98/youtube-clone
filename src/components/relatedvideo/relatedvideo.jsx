@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import HorizontalVideo from "../horizontalVideo/horizontalvideo";
 
-function RelatedVideo({ relatedVideo }) {
+function RelatedVideo({ relatedVideo, queryParam = "" }) {
   return (
-    <div className='p-sdark w-2/5 px-12 pt-8 pb-14 overflow-auto'>
+    <React.Fragment>
       {relatedVideo.data?.pages.map(page => (
         <React.Fragment key={page.nextPageToken}>
           {page.items.map((item, index) => (
@@ -23,22 +23,24 @@ function RelatedVideo({ relatedVideo }) {
                   item.snippet?.publishedAt || "2014-06-27T14:18:00Z",
               }}>
               <HorizontalVideo
-                title={item.snippet?.title || "test"}
-                videoId={item.id.videoId || "eIho2S0ZahI"}
-                channelTitle={item.snippet?.channelTitle || "test"}
+                title={item?.snippet?.title || "test"}
+                videoId={item?.id.videoId || "eIho2S0ZahI"}
+                channelTitle={item?.snippet?.channelTitle || "test"}
                 imageUrl={
-                  item.snippet?.thumbnails.medium.url ||
+                  item?.snippet?.thumbnails.medium.url ||
                   "https://i.ytimg.com/vi/eIho2S0ZahI/mqdefault.jpg"
                 }
                 publishedDate={
-                  item.snippet?.publishedAt || "2014-06-27T14:18:00Z"
+                  item?.snippet?.publishedAt || "2014-06-27T14:18:00Z"
                 }
+                description={item?.snippet?.description || "test"}
+                queryParam={queryParam}
               />
             </Link>
           ))}
         </React.Fragment>
       ))}
-    </div>
+    </React.Fragment>
   );
 }
 
