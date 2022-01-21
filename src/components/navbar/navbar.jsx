@@ -4,7 +4,6 @@ import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/authcontext";
-import { useEffect } from "react/cjs/react.development";
 import { useLogin } from "../../hooks/useLogin";
 import { useLogout } from "../../hooks/useLogout";
 import { useNavigate } from "react-router-dom";
@@ -17,10 +16,6 @@ function Navbar() {
 
   const { signIn } = useLogin();
   const { signOut } = useLogout();
-
-  useEffect(() => {
-    console.log("context", user);
-  }, [user]);
 
   const handleChange = event => {
     setSearch(event.target.value);
