@@ -8,6 +8,7 @@ module.exports = {
         tdark: "#3d3d3d",
         light: "#aaaaaa",
         yred: "#FF0000",
+        yblue: "#357dbb",
       },
       fontSize: {
         xxs: "0.65rem",
