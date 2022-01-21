@@ -20,16 +20,20 @@ function VideoDescription({
   return (
     <div>
       <div className='text-white mt-5'>
-        <p className='font-medium text-lg'>{title}</p>
+        <p className='font-medium text-sm md:text-lg'>{title}</p>
         <div className='flex justify-between text-light'>
           <div>
-            <span className='text-sm'>{numberWithCommas(viewCount)} views</span>
-            <span className='text-xl'> &#183; </span>
-            <span className='text-sm'>{formatDate(publishedDate)}</span>
+            <span className='text-xs md:text-sm'>
+              {numberWithCommas(viewCount)} views
+            </span>
+            <span className='text-xs md:text-xl'> &#183; </span>
+            <span className='text-xs md:text-sm'>
+              {formatDate(publishedDate)}
+            </span>
           </div>
           <div>
-            <span className='flex items-center text-white font-medium'>
-              <AiOutlineLike className='inline text-2xl' />
+            <span className='mt-1 flex items-center text-sm sm:text-base text-white font-medium'>
+              <AiOutlineLike className='inline text-xl md:text-2xl' />
               {likesFormatter(likeCount)}
             </span>
           </div>
@@ -39,22 +43,22 @@ function VideoDescription({
       <div className='my-4 px-3 flex items-center justify-between text-white'>
         <figure className='flex items-center gap-3'>
           <img
-            className='mt-1 ml-2 w-14 h-14 rounded-full'
+            className='mt-1 sm:ml-2 w-8 h-8 sm:w-14 sm:h-14 rounded-full'
             src={imageUrl}
             alt={channelTitle}
           />
           <span>
-            <p className='text-sm font-medium'>{channelTitle}</p>
-            <p className='text-xs text-light'>
+            <p className='text-xs sm:text-sm font-medium'>{channelTitle}</p>
+            <p className='text-xxs sm:text-xs text-light'>
               {likesFormatter(subscriberCount)} subscribers
             </p>
           </span>
         </figure>
-        <button className='px-4 bg-yred rounded-sm text-sm h-10 tracking-wide font-medium uppercase'>
+        <button className='px-2 sm:px-4 bg-yred rounded-sm text-xxs sm:text-sm h-6 sm:h-10 tracking-wide font-medium uppercase'>
           Subscribe
         </button>
       </div>
-      <div className='text-white w-2/3 px-5'>
+      <div className='text-white text-sm w-full  md:w-2/3 px-5'>
         {showMoreLess ? description : description.substring(0, 225)}
       </div>
       <button
